@@ -1,14 +1,4 @@
-// import React from "react";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
-// import { defaultTableRowRenderer, Table } from "react-virtualized";
-
-// function rowRenderer(props) {
-//   return <SortableTableRowRenderer {...props} />;
-// }
-
-// export default function CustomizedTable(props) {
-//   return <SortableTable rowRenderer={rowRenderer} {...props} />;
-// }
 import React from "react";
 import { Column, Table, defaultTableRowRenderer } from "react-virtualized";
 import "react-virtualized/styles.css"; // only needs to be imported once

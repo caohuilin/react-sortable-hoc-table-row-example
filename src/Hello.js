@@ -2,41 +2,14 @@ import React from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
+import { defaultTableRowRenderer } from "react-virtualized";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: text => <a href="#">{text}</a>
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age"
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address"
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span>
-        <a href="#">Action 一 {record.name}</a>
-        <span className="ant-divider" />
-        <a href="#">Delete</a>
-        <span className="ant-divider" />
-        <a href="#" className="ant-dropdown-link">
-          More actions
-        </a>
-      </span>
-    )
-  }
-];
-
+const Column = Table.column;
+const SortableTable = SortableContainer(Table);
+const SortableTableRowRenderer = SortableElement(defaultTableRowRenderer);
+function rowRenderer(props) {
+  return <SortableTableRowRenderer {...props} />;
+}
 const data = [
   {
     key: "1",
@@ -60,6 +33,15 @@ const data = [
 
 export default class Hello extends React.Component {
   render() {
-    return <Table columns={columns} dataSource={data} />;
+    return (
+      <SortableTable
+        lockAxis="y"
+        rowRenderer={rowRenderer}
+        dataSource={data}
+        rowKey="name"
+      >
+        <Column key={"name"} dataIndex="name" title="名称" />
+      </SortableTable>
+    );
   }
 }
