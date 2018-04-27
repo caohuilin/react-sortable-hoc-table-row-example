@@ -1,7 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import Hello from "./Hello";
 import Sort from "./Sort";
+import Test from "./Test";
+import "antd/dist/antd.css";
 
 const styles = {
   fontFamily: "sans-serif",
@@ -10,8 +11,8 @@ const styles = {
 
 const App = () => (
   <div style={styles}>
-    <Hello name="CodeSandbox" />
     <Sort />
+    <Test />
     <h2>Start editing to see some magic happen {"\u2728"}</h2>
   </div>
 );
